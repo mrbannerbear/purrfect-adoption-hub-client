@@ -10,10 +10,8 @@ const Banner = () => {
                 <div className="max-w-md">
                 <h1 className="title-responsive font-semibold"><span className="text-orange-600">Love</span> Rescued, <br /> 
                 <span className="text-orange-600 ml-3">Lives</span> Transformed</h1>
-                <p className="pl-8 mt-4">
-                "Welcome to Purrfect, where tails wag and whiskers<br />
-                <span className="md:ml-2"></span>enchant. Our furry little friends bring laughter, warmth, <br />
-                <span className="md:ml-4"></span> a unique kind of happiness & lots of love into our lives."
+                <p className="pl-8 mt-4 font-poppins max-w-md text-sm text-gray-600">
+                "Celebrating our furry little friends that bring laughter, warmth, & lots of love into our lives."
                 </p>
                 </div>
             </div>

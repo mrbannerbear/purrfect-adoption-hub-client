@@ -3,7 +3,7 @@ import { AuthProvider } from "../../context/AuthContext";
 import { useContext } from "react";
 
 const Navbar = () => {
-  const { user } = useContext(AuthProvider);
+  const { user, logout } = useContext(AuthProvider);
 
   const NavComps = [
     {
@@ -28,46 +28,40 @@ const Navbar = () => {
     },
   ];
 
+  const HandleLogout = () => {
+    logout()
+    .then()
+    .catch()
+  }
+
   return (
     <nav className="lg:px-12">
       <div className="navbar md:py-3">
-        <div className="navbar-start">
+        <div className="navbar-start flex-1">
           <NavLink to="/">
             <span className="px-4 text-3xl font-semibold text-orange-600">
               purr<span className="text-gray-600">fect </span>
-              <span className="font-normal text-sm"> Adoption Hub</span>
+              <span className="font-normal text-xs md:text-sm"> Adoption Hub</span>
             </span>
           </NavLink>
         </div>
-        <div className="navbar-end">
+        <div className="justify-end">
           {user ? (
             <div className="dropdown dropdown-left">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h7"
-                  />
-                </svg>
+                <img src={user?.photoURL} alt="" className="h-10 w-10 rounded-full"/>
               </label>
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content dropdown-bottom
       mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-52"
               >
-                <NavLink>
+                <NavLink to="/dashboard">
                   <li>Dashboard</li>
                 </NavLink>
                 <NavLink>
-                  <li>Log Out</li>
+                  <li><button className="hover:bg-transparent p-0"
+                  onClick={HandleLogout}>Log Out</button></li>
                 </NavLink>
               </ul>
             </div>
@@ -80,19 +74,20 @@ const Navbar = () => {
       </div>
       <div className="px-6 mb-3">
         <div className="container mx-auto flex justify-between items-center">
-          <div className="flex space-x-4 list-none justify-center">
+          <div className="flex space-x-4 list-none justify-center navlink-container">
+
             {NavComps.map((each) => (
+              <li key={each.id} className="text-sm md:text-[16px] p-1 md:px-2">
               <NavLink
                 className={({ isPending, isActive }) =>
                   isPending ? "" : isActive ? "text-orange-600" : ""
                 }
-                key={each.id}
                 to={each.path}
               >
-                <li className="text-sm md:text-[16px] p-1 md:px-2">
-                  {each.name}
-                </li>
+                {each.name}
+
               </NavLink>
+              </li>
             ))}
           </div>
         </div>

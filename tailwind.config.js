@@ -7,7 +7,7 @@ export default {
     ],
   theme: {
     extend: {
-      fontFamily: {'fredoka': ['Fredoka', 'sans-serif']}
+      fontFamily: {'fredoka': ['Fredoka', 'sans-serif'], 'poppins': ['Poppins', 'sans-serif']}
     },
   },
   plugins: [require("daisyui")],
