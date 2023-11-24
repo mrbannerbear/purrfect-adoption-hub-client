@@ -9,3 +9,8 @@
 .title-responsive{
     @apply text-xl md:text-3xl lg:text-5xl
 }
+
+.btn1{
+    @apply bg-orange-600 text-white hover:bg-orange-500 
+    transition-all active:scale-95 py-2 px-3 rounded-lg
+}
