@@ -14,7 +14,8 @@ const AboutUs = () => {
           <h1 className="text-3xl font-medium">Our Mission</h1>
             <p className="py-6 font-poppins">
             At Purrfect, our mission is to connect hearts and paws, creating meaningful relationships between pets and their forever families. 
-            We believe in the transformative power of adoption and aim to make the process as joyous as the companionship it brings
+            We believe in the transformative power of adoption and aim to make the process as joyous as the companionship it brings.
+            Keeping that in mind, this website was made.
             </p>
 
           </div>

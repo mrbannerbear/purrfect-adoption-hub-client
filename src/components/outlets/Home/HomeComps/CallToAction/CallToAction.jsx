@@ -17,7 +17,7 @@ const CallToAction = () => {
             <p className="mb-5 text-white font-poppins text-sm">
             Join us in giving these loving souls an equally loving home.
             </p>
-            <NavLink to="/donation-campaigns">
+            <NavLink to="/pet-listings">
             <button className="btn1">Adopt Now</button>
             </NavLink>
           </div>
