@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     ],
@@ -8,6 +10,6 @@ export default {
       fontFamily: {'fredoka': ['Fredoka', 'sans-serif']}
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
 

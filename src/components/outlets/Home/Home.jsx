@@ -1,7 +1,9 @@
+import Navbar from "../../main/Navbar";
+
 const Home = () => {
     return (
         <div>
-            Hello everyone
+            
         </div>
     );
 };
