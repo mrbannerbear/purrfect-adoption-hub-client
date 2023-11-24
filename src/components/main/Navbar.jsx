@@ -25,19 +25,9 @@ const Navbar = () => {
         },
       ];
 
-//     <NavLink
-//     className={({ isPending, isActive }) =>
-//       isPending ? "" : isActive ? "border-b-[1px] border-[#607244]" : "smooth-underline"
-//     }
-//     key={each.id}
-//     to={each.path}
-//   >
-//     <li className="">{each.name}</li>
-//   </NavLink>
-
   return (
     <>
-    <nav className="navbar bg-orange-50 md:py-3">
+    <nav className="navbar md:py-3">
   <div className="navbar-start">
     <a className="btn btn-ghost text-2xl text-orange-600">purrfect</a>
   </div>
@@ -56,7 +46,7 @@ const Navbar = () => {
   </div>
 
 </nav>
-      <nav className="px-6">
+      <nav className="px-6 mb-3">
         <div className="container mx-auto flex justify-between items-center">
 
           <div className="flex space-x-4 list-none justify-center">
@@ -65,12 +55,12 @@ const Navbar = () => {
                 each => (
                     <NavLink
                     className={({ isPending, isActive }) =>
-                      isPending ? "" : isActive ? "border-b-[1px] border-orange-600 bg-orange-50" : ""
+                      isPending ? "" : isActive ? "text-orange-600" : ""
                     }
                     key={each.id}
                     to={each.path}
                   >
-                    <li className="text-sm md:text-base py-1 px-2">{each.name}</li>
+                    <li className="text-sm md:text-[16px] p-1 md:px-2">{each.name}</li>
                   </NavLink>
                 )
             )

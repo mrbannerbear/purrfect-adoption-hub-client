@@ -5,3 +5,7 @@
 *{
     @apply font-fredoka text-gray-700
 }
+
+.title-responsive{
+    @apply text-xl md:text-3xl lg:text-5xl
+}

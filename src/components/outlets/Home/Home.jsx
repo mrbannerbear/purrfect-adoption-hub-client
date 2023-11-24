@@ -1,9 +1,9 @@
-import Navbar from "../../main/Navbar";
+import Banner from "./HomeComps/Banner";
 
 const Home = () => {
     return (
         <div>
-            
+            <Banner></Banner>
         </div>
     );
 };
