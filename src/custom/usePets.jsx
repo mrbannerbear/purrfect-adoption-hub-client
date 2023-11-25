@@ -2,6 +2,9 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const usePets = () => {
+
+    // if(search === "" || !search){ search = "?qa=all"}
+
   const {
     isLoading,
     error,
@@ -10,7 +13,7 @@ const usePets = () => {
   } = useQuery({
     queryKey: ["all-pets"],
     queryFn: async () => {
-      const response = await axios.get("http://localhost:4200/all-pets");
+      const response = await axios.get(`http://localhost:4200/all-pets`);
       return response.data;
     },
   });
