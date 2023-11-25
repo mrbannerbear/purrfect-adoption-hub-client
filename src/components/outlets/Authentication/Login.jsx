@@ -78,6 +78,9 @@ const Login = () => {
       <Helmet>
         <title>PurrFect | Login</title>
       </Helmet>
+      <div className="w-full bg-orange-50">
+      <h1 className="font-semibold text-4xl py-4 text-center">Login</h1>
+      </div>
       <div className="hero min-h-screen bg-orange-50">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="card flex-shrink-0 w-full max-w-xl rounded-lg
