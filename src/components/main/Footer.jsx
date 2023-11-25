@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
     <>
-      <footer className="footer p-10 bg-orange-50 font-poppins">
+      <footer className="footer p-10 bg-orange-200 font-poppins">
         <nav>
           <header className="footer-title font-poppins">Services</header>
           <a className="link link-hover">Branding</a>
@@ -23,7 +23,7 @@ const Footer = () => {
           <a className="link link-hover">Cookie policy</a>
         </nav>
       </footer>
-      <footer className="footer px-10 py-4 border-t bg-orange-50">
+      <footer className="footer px-10 py-4 border-t bg-orange-100">
         <aside className="items-center grid-flow-col">
           <p>
           <span className="px-4 text-3xl font-semibold text-orange-600">

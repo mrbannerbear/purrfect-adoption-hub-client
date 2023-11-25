@@ -6,25 +6,25 @@ const Categories = () => {
         {
             id: 1,
             name: "Cats",
-            path: "pet-listings?qa=cats",
+            path: "pet-listings?qa=cat",
             img: "https://images.unsplash.com/photo-1600357077527-930ccbaf7773?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             id: 2,
             name: "Dogs",
-            path: "pet-listings?qa=dogs",
+            path: "pet-listings?qa=dog",
             img: "https://images.unsplash.com/photo-1592817797597-392e3b878e1c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             id: 3,
             name: "Rabbits",
-            path: "pet-listings?qa=rabbits",
+            path: "pet-listings?qa=rabbit",
             img: "https://images.unsplash.com/photo-1604953305989-21acd7a029ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
         {
             id: 4,
             name: "Fish",
-            path: "pet-listings?qa=fishes",
+            path: "pet-listings?qa=fish",
             img: "https://images.unsplash.com/photo-1436891461396-6df41158de09?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         },
     ]
