@@ -118,7 +118,9 @@ const PetListings = () => {
                 </div>
               </div>
             </div>
-          ))}
+          )
+          
+          )}
       </div>
       <Toaster></Toaster>
     </div>

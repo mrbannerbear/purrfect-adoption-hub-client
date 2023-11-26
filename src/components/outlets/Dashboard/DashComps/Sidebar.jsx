@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthProvider } from "../../../../context/AuthContext";
 import useUsers from "../../../../custom/useUsers";
+import { IoReorderThreeOutline } from "react-icons/io5";
 
 
 const Sidebar = () => {
@@ -61,9 +62,9 @@ const Sidebar = () => {
         {/* Page content here */}
         <label
           htmlFor="my-drawer-2"
-          className="smooth-underline drawer-button lg:hidden"
+          className="text-xl bg-orange-50 drawer-button lg:hidden"
         >
-          Open drawer
+          <IoReorderThreeOutline></IoReorderThreeOutline>
         </label>
       </div>
       <div className="drawer-side">
@@ -72,7 +73,7 @@ const Sidebar = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-olive-50 text-base-content">
+        <ul className="menu p-4 w-80 min-h-full bg-orange-50 text-base-content">
           {/* Sidebar content here */}
           {userLinks.map((each) => (
             <NavLink

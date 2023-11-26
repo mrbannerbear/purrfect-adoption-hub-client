@@ -11,6 +11,7 @@ import Dashboard from "../components/outlets/Dashboard/Dashboard";
 import AdminRoutes from "./AdminRoutes";
 import AllUsers from "../components/outlets/Dashboard/DashComps/AdminDash/AllUsers/AllUsers";
 import AllPets from "../components/outlets/Dashboard/DashComps/AdminDash/AllPets/AllPets";
+import DonationCampaigns from "../components/outlets/DonationCampaigns/DonationCampaigns";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/pet-listings",
         element: <PetListings></PetListings>,
+      },
+      {
+        path: "/donation-campaigns",
+        element: <DonationCampaigns></DonationCampaigns>
       },
       {
         path: "/pet-listings/:id",
