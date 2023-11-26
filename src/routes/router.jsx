@@ -5,6 +5,9 @@ import Home from "../components/outlets/Home/Home";
 import Signup from "../components/outlets/Authentication/Signup";
 import Login from "../components/outlets/Authentication/Login";
 import PetListings from "../components/outlets/PetListings/PetListings";
+import EachPet from "../components/outlets/EachPet/EachPet";
+import PrivateRoutes from "./PrivateRoutes";
+import Dashboard from "../components/outlets/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +23,12 @@ const router = createBrowserRouter([
                 element: <PetListings></PetListings>
             },
             {
+                path: "/pet-listings/:id",
+                element: <PrivateRoutes>
+                    <EachPet></EachPet>
+                </PrivateRoutes>
+            },
+            {
                 path: "/signup",
                 element: <Signup></Signup>
             },
@@ -28,6 +37,11 @@ const router = createBrowserRouter([
                 element: <Login></Login>
             },
         ]
+    },
+    {
+        element: <Dashboard></Dashboard>,
+        path: "/dashboard",
+        
     }
 ])
 

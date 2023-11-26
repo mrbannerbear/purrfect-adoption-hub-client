@@ -37,7 +37,7 @@ const Categories = () => {
                         {
                             CategoryList.map(
                                 each => (
-                                    <NavLink  key={each.id} to={each.path}>
+                                    <NavLink  key={each.id} to={each.path} state={each.name}>
                                     <div className="py-3 px-4 bg-cover w-56 h-56 flex justify-center items-center 
                                            transition-all hover:scale-105 relative rounded-lg"
                                       style={{backgroundImage: `url(${each.img})`}}>

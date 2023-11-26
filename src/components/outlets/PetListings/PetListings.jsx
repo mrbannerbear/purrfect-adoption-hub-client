@@ -7,18 +7,17 @@ import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
 const PetListings = () => {
-  const [search, setSearch] = useState();
-  const [categoryFilter, setCategoryFilter] = useState()
+  const [categoryFilter, setCategoryFilter] = useState("All")
+  const [uniquePet, setUniquePet] = useState(null)
   let location = useLocation();
+  console.log(location)
 
   useEffect(() => {
-    if (location?.search) {
-      setSearch(location.search);
-    }
-    console.log(search);
-  }, [location.search, search]);
+    if(location.state){
+    setCategoryFilter(location.state)}
+  }, [location.state]);
 
-  const { isLoading, pets, error } = usePets(search);
+  const { isLoading, pets, error } = usePets();
 
   if (error) {
     return (
@@ -39,22 +38,29 @@ const PetListings = () => {
   const HandleSearch = (e) => {
     e.preventDefault();
     const name = e.target.search.value;
-    setSearch(`?qn=${name}`);
-    if (name === "" || !name) {
-      setSearch("");
-    } else if (!pets.find((each) => each.name === name)) {
-      toast("Pet not found");
-      setSearch("");
+
+     if (pets.find((each) => each.name === name)) {
+        setUniquePet(name)
     }
-    console.log(pets, name);
+    else{
+        setUniquePet(null)
+    }
   };
+  console.log(uniquePet)
 
   const options = ["All", "Cats", "Dogs", "Rabbits", "Fish"];
-  const defaultOption = options[0];
+  const defaultOption = options[0]
 
   const HandleDropdown = (e) => {
-        setCategoryFilter(e.value.toLowerCase())
+        setCategoryFilter(e.value)
   }
+
+  const filtered = categoryFilter !== "All" ? pets
+  .filter((each) => (each.adopted === false &&
+    categoryFilter !== "All" && categoryFilter.toLowerCase() === each.category)
+    ): pets.filter(each => each.adopted === false)
+
+    const uniqueFiltered = uniquePet ? pets.filter(each => each.name === uniquePet) : filtered
 
   return (
     <div className="min-h-screen bg-orange-50 py-12">
@@ -73,6 +79,7 @@ const PetListings = () => {
         <div className="">
           {/*   <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />*/}
           <Dropdown
+          className="rounded-lg"
             options={options}
             value={defaultOption}
             onChange={HandleDropdown}
@@ -82,10 +89,7 @@ const PetListings = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-8 gap-10 justify-items-center">
-        {pets
-          .filter((each) => (each.adopted === false &&
-            categoryFilter !== "all" ? categoryFilter === each.category : "")
-            )
+        {uniqueFiltered
           .map((each) => (
             <div
               key={each?._id}
@@ -106,7 +110,7 @@ const PetListings = () => {
                 <p className="text-gray-600">{each?.location}</p>
                 <div className="card-actions absolute -bottom-5 w-full">
                   <NavLink
-                    to={`/all-pets/${each._id}`}
+                    to={`/pet-listings/${each._id}`}
                     className="w-3/4 mx-auto"
                   >
                     <button className="btn1 w-full">Details</button>
