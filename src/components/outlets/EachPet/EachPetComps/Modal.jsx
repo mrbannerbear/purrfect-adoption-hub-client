@@ -6,13 +6,14 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../../../../context/AuthContext";
 
-const Modal = ({ pet }) => {
+const Modal = () => {
 const {user} = useContext(AuthProvider)
 
 
   const HandleAdopt = (e) => {
+    e.preventDefault()
     console.log(e)
-  }
+  }   
 
 
   return (

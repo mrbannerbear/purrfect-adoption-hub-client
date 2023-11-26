@@ -10,6 +10,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Dashboard from "../components/outlets/Dashboard/Dashboard";
 import AdminRoutes from "./AdminRoutes";
 import AllUsers from "../components/outlets/Dashboard/DashComps/AdminDash/AllUsers/AllUsers";
+import AllPets from "../components/outlets/Dashboard/DashComps/AdminDash/AllPets/AllPets";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,13 @@ const router = createBrowserRouter([
                 <AllUsers></AllUsers>
             </AdminRoutes>,
             path: "/dashboard/admin/all-users"
-        }
+        },
+        {
+            element: <AdminRoutes>
+                <AllPets></AllPets>
+            </AdminRoutes>,
+            path: "/dashboard/admin/all-pets"
+        },
     ]
   },
 ]);
