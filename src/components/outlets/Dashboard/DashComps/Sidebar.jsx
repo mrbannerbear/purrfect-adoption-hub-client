@@ -1,16 +1,21 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthProvider } from "../../../../context/AuthContext";
+import useUsers from "../../../../custom/useUsers";
 
 
 const Sidebar = () => {
 
     const { user, logout } = useContext(AuthProvider)
+    const { users } = useUsers()
+    console.log(user)
 
-  const secureLinks = [
+    const uniqueUser = users.find(each => each.email === user.email)
+
+  const userLinks = [
     {
       id: 1,
-      path: "/admin/authorized-users",
+      path: "/dashboard",
       name: "Authorized Users",
     },
     {
@@ -24,6 +29,24 @@ const Sidebar = () => {
       name: "Edit Menu",
     },
   ];
+
+  const adminLinks = [
+    {
+        id: 1,
+        path: "/dashboard/admin/all-users",
+        name: "Users"
+    },
+    {
+        id: 2,
+        path: "/dashboard/admin/all-pets",
+        name: "All Pets"
+    },
+    {
+        id: 3,
+        path: "/dashboard/admin/all-donations",
+        name: "All Donations"
+    }
+  ]
 
   const HandleLogOut = () => {
     logout()
@@ -51,7 +74,7 @@ const Sidebar = () => {
         ></label>
         <ul className="menu p-4 w-80 min-h-full bg-olive-50 text-base-content">
           {/* Sidebar content here */}
-          {secureLinks.map((each) => (
+          {userLinks.map((each) => (
             <NavLink
               key={each.id}
               to={each.path}
@@ -65,6 +88,23 @@ const Sidebar = () => {
             >
               <li>{each.name}</li>
             </NavLink>
+          ))}
+         {uniqueUser?.role === "admin" && <div className="divider"></div>}
+          {uniqueUser?.role === "admin" && (
+            adminLinks.map((each) => (
+            <NavLink
+              key={each.id}
+              to={each.path}
+              className={({ isPending, isActive }) =>
+                isPending
+                  ? ""
+                  : isActive
+                  ? "border-b-[1px] border-[#607244] my-2 text-olive-600 w-1/2"
+                  : "smooth-underline my-2 w-1/2" 
+              }
+            >
+              <li>{each.name}</li>
+            </NavLink>)
           ))}
           <div className="divider"></div>
           <NavLink to="/" className="smooth-underline w-1/2"><li>Home</li></NavLink>

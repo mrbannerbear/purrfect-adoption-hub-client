@@ -1,22 +1,22 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const usePets = () => {
+const useUsers = () => {
 
   const {
     isLoading,
     error,
-    data: pets = [],
+    data: users = [],
     refetch,
   } = useQuery({
-    queryKey: ["all-pets"],
+    queryKey: ["users"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4200/all-pets`);
+      const response = await axios.get(`http://localhost:4200/users`);
       return response.data;
     },
   });
 
-  return {isLoading, error, pets, refetch};
+  return {isLoading, error, users, refetch};
 };
 
-export default usePets;
+export default useUsers;
