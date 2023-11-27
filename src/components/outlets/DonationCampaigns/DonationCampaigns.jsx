@@ -40,6 +40,9 @@ const DonationCampaigns = () => {
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title text-3xl font-medium">{each?.name}</h2>
+              <p className="text-xs text-gray-600 text-center">
+                {each?.shortDescription}
+              </p>
               <progress
                 className="progress w-56 mt-4"
                 value={each.donated}
@@ -48,7 +51,7 @@ const DonationCampaigns = () => {
               <p className="text-xs text-gray-600 text-center">${each.donated} of ${each.maxDonation} donated</p>
               <div className="card-actions absolute -bottom-5 w-full">
                 <NavLink
-                  to={`/pet-listings/${each._id}`}
+                  to={`/donations/${each._id}`}
                   className="w-3/4 mx-auto"
                 >
                   <button className="btn1 w-full">Details</button>
