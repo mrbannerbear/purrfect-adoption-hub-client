@@ -8,10 +8,12 @@ import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-const DonationModal = () => {
+const DonationModal = ({donationId, donatedAmount}) => {
   const { user } = useContext(AuthProvider);
   const [amount, setAmount] = useState(null)
   const [checkoutTrue, setCheckoutTrue] = useState(false)
+
+  console.log(donationId)
 
   const stripePromise = loadStripe(
     "pk_test_51OExdgCibCkEW5UbewvmExxjnDfWjoOqrT4LgVsQlQkvYiOvTNALjs2nA2RLfA47I5kXSrXBquj4cI5tSQyp9Mhn00SMQzWNWN"
@@ -69,15 +71,16 @@ const DonationModal = () => {
             name="Amount"
             type="number"
             className="input input-bordered  rounded-lg focus:outline-none outline-none"
+            readOnly={checkoutTrue}
           />
         </div>
 
-        <div className="modal-action">
+       {!checkoutTrue && <div className="modal-action">
             <button className="btn1">Proceed</button>
-        </div>
+        </div>}
       </form>
           {checkoutTrue === true && amount !== null &&  (<Elements stripe={stripePromise}>
-          <CheckoutForm user={user} amount={amount} setCheckoutTrue={setCheckoutTrue}></CheckoutForm>
+          <CheckoutForm user={user} amount={amount} setCheckoutTrue={setCheckoutTrue} donationId={donationId} donatedAmount={donatedAmount}></CheckoutForm>
           </Elements>)}
           <form method="dialog" className="mt-6">
               <button className="btn1 border-base-content w-24">Close</button>

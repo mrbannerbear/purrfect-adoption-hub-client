@@ -34,7 +34,7 @@ const EachDonation = () => {
               ${each?.donated} of ${each?.maxDonation} donated
             </p>
             <div className="card-actions absolute -bottom-5 w-full mx-auto flex justify-center">
-              <DonationModal></DonationModal>
+              <DonationModal donationId={each?._id} donatedAmount={each?.donated}></DonationModal>
             </div>
           </div>
         </div>
