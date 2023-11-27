@@ -66,8 +66,6 @@ const AllUsers = () => {
               handleClose={closeModal}
             />
             
-            {/* <AdminModal email={props.row.original.email}></AdminModal> */}
-            
           </div>
         </div>
       ),

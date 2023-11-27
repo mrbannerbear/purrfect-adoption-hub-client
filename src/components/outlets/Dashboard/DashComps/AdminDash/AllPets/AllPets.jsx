@@ -4,25 +4,16 @@ import { useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-tabl
 import { MdEdit } from "react-icons/md";
 import { useMemo } from "react";
 import usePets from "../../../../../../custom/usePets";
-import Loading from "../../../../../../custom/Loading";
 
 const AllPets = () => {
-  const { isLoading, pets } = usePets();
+  const { pets } = usePets();
   const data = useMemo(() => pets, [])
-
-  if(isLoading){
-    return <Loading></Loading>
-  }
 
   /** @type import("@tanstack/react-table").ColumnDef<any>*/
   const columns = [
     {
         header: "Name",
         accessorKey: "name"
-    },
-    {
-        header: "Email",
-        accessorKey: "email"
     },
     {
         header: "Image",
@@ -33,15 +24,20 @@ const AllPets = () => {
             </div>
         }
     },
+    {
+        header: "Adopted",
+        accessorKey: "adopted"
+    }
   ]
   const table = useReactTable({data, columns, getCoreRowModel:
 getCoreRowModel()})
+  console.log(pets)
  
 
   return <div className="min-h-screen">
     <h1 className="py-6 text-center text-3xl font-semibold font-poppins">All Pets</h1>
-      <div className="w-[90%] mx-auto">
-        <table>
+      <div className="w-[90%] mx-auto border-2">
+        <table className="w-full">
             {
                 table.getHeaderGroups().map(
                     headerGroup => (

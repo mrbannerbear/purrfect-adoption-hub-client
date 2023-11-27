@@ -13,6 +13,7 @@ import AllUsers from "../components/outlets/Dashboard/DashComps/AdminDash/AllUse
 import AllPets from "../components/outlets/Dashboard/DashComps/AdminDash/AllPets/AllPets";
 import DonationCampaigns from "../components/outlets/DonationCampaigns/DonationCampaigns";
 import EachDonation from "../components/outlets/EachDonation/EachDonation";
+import AllDonations from "../components/outlets/Dashboard/DashComps/AdminDash/AllDonations/AllDonations";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +78,12 @@ const router = createBrowserRouter([
                 <AllPets></AllPets>
             </AdminRoutes>,
             path: "/dashboard/admin/all-pets"
+        },
+        {
+            element: <AdminRoutes>
+                <AllDonations></AllDonations>
+            </AdminRoutes>,
+            path: "/dashboard/admin/all-donations"
         },
     ]
   },

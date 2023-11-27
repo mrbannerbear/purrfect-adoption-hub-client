@@ -30,8 +30,11 @@ const AdminModal = ({ email, name, role }) => {
     e.preventDefault()
     const role = e.target.Role.value
     console.log(role);
-    // axios.put(`http://localhost:4200/users`, {  })
-    refetch()
+    axios.patch(`http://localhost:4200/users/${user._id}`, { role })
+    .then(res => {console.log(res)
+      setRole(role)
+    refetch()}).catch(err => console.log(err))
+    
   };
 
   return (
@@ -77,7 +80,7 @@ const AdminModal = ({ email, name, role }) => {
                 <select
                   name="Role"
                   type="text"
-                  defaultValue={role}
+                  defaultValue={defaultRole}
                 //   value={defaultRole}
                   className="input input-bordered  rounded-lg focus:outline-none outline-none px-2"
                 >
@@ -93,7 +96,7 @@ const AdminModal = ({ email, name, role }) => {
                 <input
                   name="Role"
                   type="text"
-                  defaultValue={role}
+                  defaultValue={defaultRole}
                     readOnly
                   className="input input-bordered  rounded-lg focus:outline-none outline-none"
                 />
