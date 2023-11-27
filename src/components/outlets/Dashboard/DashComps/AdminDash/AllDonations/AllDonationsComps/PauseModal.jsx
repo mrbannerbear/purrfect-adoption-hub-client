@@ -21,6 +21,7 @@ const PauseModal = ({ paused, id }) => {
       })
       .then((res) => {
         console.log(res);
+        refetch()
         if(res.data.modifiedCount > 0){
             refetch();
             toast("Status changed successfully")

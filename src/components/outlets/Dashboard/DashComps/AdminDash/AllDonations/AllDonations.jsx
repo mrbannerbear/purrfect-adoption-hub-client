@@ -4,6 +4,7 @@ import { MdEdit } from "react-icons/md";
 import useDonations from "../../../../../../custom/useDonations";
 import PauseModal from "./AllDonationsComps/PauseModal";
 import DeleteModal from "./AllDonationsComps/DeleteModal";
+import { NavLink } from "react-router-dom"
 
 const AllDonations = () => {
   const { donations } = useDonations();
@@ -50,6 +51,13 @@ const AllDonations = () => {
                     <DeleteModal
                       id={each?._id}
                     ></DeleteModal>
+                  </td>
+                  <td>
+                    <NavLink to={`/edit-donation/${each?._id}`}>
+                        <button className="btn1">
+                            Edit
+                        </button>
+                    </NavLink>
                   </td>
                 </tr>
               ))}
