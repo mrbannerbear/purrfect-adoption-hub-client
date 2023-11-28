@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import usePets from "../../../../../../custom/usePets";
+import PetAdopt from "./AllPetsComps/PetAdopt";
 import PetDelete from "./AllPetsComps/PetDelete";
+
 
 const AllPets = () => {
   const { pets } = usePets();
@@ -32,7 +34,7 @@ const AllPets = () => {
                         <td>{i+1}</td>
                         <td>{each?.name}</td>
                         <td><img src={each?.image} className="w-16 h-12" alt="" /></td>
-                        <td>{each?.adopted ? "true" : "false"}</td>
+                        <td className="flex gap-1">{each?.adopted ? "true" : "false"} <PetAdopt id={each._id}></PetAdopt></td>
                         <td><PetDelete id={each._id}></PetDelete></td>
                         <td><button className="btn1">Update</button></td>
                     </tr>
