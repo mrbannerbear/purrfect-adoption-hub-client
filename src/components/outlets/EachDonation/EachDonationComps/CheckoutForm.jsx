@@ -82,7 +82,7 @@ const handleForm = async (e) => {
       donationDate: new Date().toISOString()
     };
 
-    axios.post(`http://localhost:4200/donations/${donationId}`, { userDonations: paymentDetails })
+    axios.post(`http://localhost:4200/donations/${donationId}`, { userDonations: paymentDetails }, { withCredentials: true })
     .then(res => {console.log("posted", res.data);
     axios.patch(`http://localhost:4200/donations/${donationId}`, { donated: amount + parseInt(donatedAmount) } )
 .then(res =>{ console.log(res);

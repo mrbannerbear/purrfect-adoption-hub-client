@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { Toaster, toast } from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
   const { login, googleAuth, facebookAuth } = useContext(AuthProvider);
@@ -23,19 +24,19 @@ const Login = () => {
     login(email, password)
       .then((res) => {
         console.log(res);
-        // const user = { email };
-        // axios
-        //   .post("https://lib-management-server.vercel.app/jwt", user, { withCredentials: true })
-        //   .then((res) => {
-        //     toast("Log in successful");
-        //     if (res.data.success) {
-        //       navigate(location?.state ? location?.state : "/");
-        //     }
-        //   })
+        axios
+        .post("http://localhost:4200/jwt", {user: email}, { withCredentials: true })
+        .then((res) => {
+          toast("Login successful");
+          if (res.data.success) {
+            window.location.href = "/"
+            navigate(location?.state ? location?.state : "/");
+          }
+        })
 
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        .catch((error) => {
+          console.log(error);
+        });
 
         setError(null);
      
@@ -50,10 +51,23 @@ const Login = () => {
   const HandleGoogleAuth = () => {
     googleAuth()
       .then((data) => {
+        const user = data.user
         console.log(data);
-
         setError(null);
-        // navigate(location?.state ? location.state : "/");
+        axios
+        .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+        .then((res) => {
+          console.log(res.data)
+          toast("Login successful");
+          if (res.data.success) {
+            // window.location.href = "/"
+            navigate(location?.state ? location?.state : "/");
+          }
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -64,8 +78,22 @@ const Login = () => {
   const HandleFacebookAuth = () => {
     facebookAuth()
       .then((data) => {
+        const user = data.user
         console.log(data);
         setError(null);
+        axios
+        .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+        .then((res) => {
+          toast("Login successful");
+          if (res.data.success) {
+            window.location.href = "/"
+            navigate(location?.state ? location?.state : "/");
+          }
+        })
+
+        .catch((error) => {
+          console.log(error);
+        });
       })
       .catch((err) => {
         console.log(err);

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import { useContext } from "react";
+import axios from "axios";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthProvider);
@@ -30,7 +31,15 @@ const Navbar = () => {
 
   const HandleLogout = () => {
     logout()
-    .then()
+    .then(res => {
+      axios.post("http://localhost:4200/logout", {}, { withCredentials: true })
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
+    })
     .catch()
   }
 

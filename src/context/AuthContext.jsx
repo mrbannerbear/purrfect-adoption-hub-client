@@ -10,6 +10,7 @@ import {
   } from "firebase/auth";
   import auth from "../../firebase/firebase.config";
   import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 
   
   export const AuthProvider = createContext();
@@ -46,6 +47,19 @@ import {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
         setLoading(false);
+        const loggedUser = { email: user?.email }
+        if(user){
+            axios.post("http://localhost:4200/jwt", loggedUser, { withCredentials: true })
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        }
+        else{
+            axios.post("http://localhost:4200/logout", loggedUser, {
+                withCredentials: true
+            })
+            .then(res => console.log(res.data))
+            .catch(err => console.log(err))
+        }
       });
       return () => unsubscribe();
     }, []);

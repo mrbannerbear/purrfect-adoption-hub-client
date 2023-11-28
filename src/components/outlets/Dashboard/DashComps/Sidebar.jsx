@@ -15,9 +15,14 @@ const Sidebar = () => {
 
   const userLinks = [
     {
-      id: 1,
+      id: 0,
       path: "/dashboard",
-      name: "Authorized Users",
+      name: "Profile"
+    },
+    {
+      id: 1,
+      path: "/dashboard/add-pet",
+      name: "Add Pet",
     },
     {
       id: 2,

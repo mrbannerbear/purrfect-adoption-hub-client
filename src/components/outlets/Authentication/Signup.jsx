@@ -1,18 +1,18 @@
 import { useContext, useState } from "react";
 import { AuthProvider } from "../../../context/AuthContext";
 import { Toaster, toast } from "react-hot-toast";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { updateProfile } from "firebase/auth";
 import auth from "../../../../firebase/firebase.config";
 import axios from "axios";
-// import axios from "axios";
 
 const Signup = () => {
   const { signup, googleAuth, facebookAuth } = useContext(AuthProvider);
   const [error, setError] = useState(null);
+  const navigate = useNavigate()
 
   const HandleRegister = (e) => {
     e.preventDefault();
@@ -60,7 +60,21 @@ const Signup = () => {
             lastSignInTime: lastSignInTime,
             role: "user",
           })
-          .then()
+          .then(res => {
+            axios
+            .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+            .then((res) => {
+              toast("Registration successful");
+              if (res.data.success) {
+                window.location.href = "/"
+                navigate(location?.state ? location?.state : "/");
+              }
+            })
+  
+            .catch((error) => {
+              console.log(error);
+            });
+          })
           .catch();
       })
       .catch((err) => {
@@ -83,7 +97,21 @@ const Signup = () => {
           creationTime: creationTime,
           lastSignInTime: lastSignInTime,
           role: "user",
-        });
+        }).then(res => {
+          axios
+          .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+          .then((res) => {
+            toast("Registration successful");
+            if (res.data.success) {
+              window.location.href = "/"
+              navigate(location?.state ? location?.state : "/");
+            }
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
+        }).catch();
         setError(null);
       })
       .catch((err) => {
@@ -106,7 +134,21 @@ const Signup = () => {
           creationTime: creationTime,
           lastSignInTime: lastSignInTime,
           role: "user",
-        });
+        }).then(res => {
+          axios
+          .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+          .then((res) => {
+            toast("Registration successful");
+            if (res.data.success) {
+              window.location.href = "/"
+              navigate(location?.state ? location?.state : "/");
+            }
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
+        }).catch();
         setError(null);
       })
       .catch((err) => {
