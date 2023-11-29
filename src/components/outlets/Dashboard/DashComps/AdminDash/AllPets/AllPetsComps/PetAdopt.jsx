@@ -15,7 +15,7 @@ const PetAdopt = ({ id }) => {
   const HandleAdopt = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:4200/all-pets/${id}`, { adopted: !pet?.adopted})
+      .patch(`http://localhost:4200/all-pets/${id}`, { adopted: pet?.adopted == "true" ? "false" : "true"})
       .then((res) => {
         console.log(res);
         if(res.data.modifiedCount > 0){
@@ -40,7 +40,7 @@ const PetAdopt = ({ id }) => {
             <>
               <div className="form-control">
                 <h2 className="text-center py-3 font-medium text-xl">
-                 You will change the adopted status to {pet?.adopted ? "false" : "true"}
+                 You will change the adopted status. Proceed?
                 </h2>
               </div>
 

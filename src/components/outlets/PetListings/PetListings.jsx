@@ -56,9 +56,9 @@ const PetListings = () => {
   }
 
   const filtered = categoryFilter !== "All" ? pets
-  .filter((each) => (each.adopted === false &&
+  .filter((each) => ((each.adopted === false || each?.adopted === "false") &&
     categoryFilter !== "All" && categoryFilter.toLowerCase() === each.category)
-    ): pets.filter(each => each.adopted === false)
+    ): pets.filter(each => each.adopted === false || each?.adopted === "false")
 
     const uniqueFiltered = uniquePet ? pets.filter(each => each.name === uniquePet) : filtered
 
