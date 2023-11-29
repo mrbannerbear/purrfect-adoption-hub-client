@@ -2,7 +2,7 @@ import usePets from "../../../custom/usePets";
 import { useLocation, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { useEffect, useState } from "react";
-import { toast, Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 
@@ -77,7 +77,6 @@ const PetListings = () => {
         </form>
 
         <div className="">
-          {/*   <Dropdown options={options} onChange={this._onSelect} value={defaultOption} placeholder="Select an option" />*/}
           <Dropdown
           className="rounded-lg"
             options={options}

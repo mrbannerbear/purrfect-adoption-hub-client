@@ -45,10 +45,10 @@ const DonationCampaigns = () => {
               </p>
               <progress
                 className="progress w-56 mt-4"
-                value={each.donated}
+                value={each?.donated ? each.donated : 0}
                 max={each.maxDonation}
               ></progress>
-              <p className="text-xs text-gray-600 text-center">${each.donated} of ${each.maxDonation} donated</p>
+              <p className="text-xs text-gray-600 text-center">${each?.donated ? each.donated : 0} of ${each.maxDonation} donated</p>
               <div className="card-actions absolute -bottom-5 w-full">
                 <NavLink
                   to={`/donations/${each._id}`}

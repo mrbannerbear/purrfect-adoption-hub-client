@@ -17,6 +17,8 @@ import AllDonations from "../components/outlets/Dashboard/DashComps/AdminDash/Al
 import EditDonation from "../components/outlets/Dashboard/DashComps/AdminDash/AllDonations/AllDonationsComps/EditDonation";
 import AddPet from "../components/outlets/Dashboard/DashComps/UserDash/AddPet/AddPet";
 import PetUpdate from "../components/outlets/Dashboard/DashComps/AdminDash/AllPets/AllPetsComps/PetUpdate";
+import CreateDonation from "../components/outlets/Dashboard/DashComps/UserDash/CreateDonation/CreateDonation";
+import MyDonations from "../components/outlets/Dashboard/DashComps/UserDash/MyDonations/MyDonations";
 
 const router = createBrowserRouter([
   {
@@ -58,12 +60,6 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
-      },
-      {
-        element: <PrivateRoutes>
-          <EditDonation></EditDonation>
-        </PrivateRoutes>,
-        path: "/edit-donation/:id"
       }
     ],
   },
@@ -105,6 +101,24 @@ const router = createBrowserRouter([
             <PetUpdate></PetUpdate>
           </PrivateRoutes>,
           path: "/dashboard/pet-update/:id"
+        },
+        {
+          element: <PrivateRoutes>
+            <CreateDonation></CreateDonation>
+          </PrivateRoutes>,
+          path: "/dashboard/create-donation"
+        },
+        {
+          element: <PrivateRoutes>
+            <EditDonation></EditDonation>
+          </PrivateRoutes>,
+          path: "/dashboard/edit-donation/:id"
+        },
+        {
+          element: <PrivateRoutes>
+            <MyDonations></MyDonations>
+          </PrivateRoutes>,
+          path: "/dashboard/my-donation-campaigns"
         }
     ]
   },

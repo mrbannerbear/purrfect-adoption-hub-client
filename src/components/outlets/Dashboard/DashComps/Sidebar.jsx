@@ -26,13 +26,13 @@ const Sidebar = () => {
     },
     {
       id: 2,
-      path: "/admin/messages",
-      name: "Messages",
+      path: "/dashboard/create-donation",
+      name: "Create Donation",
     },
     {
-      id: 3,
-      path: "/admin/edit-menu",
-      name: "Edit Menu",
+      id: 4,
+      path: "/dashboard/my-donation-campaigns",
+      name: "Donation Campaigns",
     },
   ];
 
@@ -61,7 +61,7 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="drawer lg:drawer-open min-h-full bg-orange-50">
+    <div className="drawer lg:drawer-open min-h-full bg-white">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         {/* Page content here */}
@@ -78,7 +78,7 @@ const Sidebar = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-orange-50 text-base-content">
+        <ul className="menu p-4 w-64 lg:pl-8 min-h-full bg-orange-50 text-base-content">
           {/* Sidebar content here */}
           {userLinks.map((each) => (
             <NavLink

@@ -35,13 +35,20 @@ const EachDonation = () => {
                   max={each?.maxDonation}
                 ></progress>
                 <p className="text-xs text-gray-600 text-center">
-                  ${each?.donated} of ${each?.maxDonation} donated
+                ${each?.donated ? each.donated : 0} of ${each?.maxDonation} donated
                 </p>
                 <div className="card-actions absolute -bottom-5 w-full mx-auto flex justify-center">
-                  <DonationModal
+                  {each?.donationPaused || each?.donationPaused == "true" ? <button className="py-2 px-3
+                  lg:w-40
+                    rounded-lg text-white
+                  bg-slate-400" disabled>
+                      Donate
+                    </button>
+                    :
+                    <DonationModal
                     donationId={each?._id}
                     donatedAmount={each?.donated}
-                  ></DonationModal>
+                  ></DonationModal>}
                 </div>
               </div>
             </div>

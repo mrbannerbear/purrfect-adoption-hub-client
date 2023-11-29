@@ -62,7 +62,7 @@ import axios from "axios";
         }
       });
       return () => unsubscribe();
-    }, []);
+    }, [user]);
   
     const logout = () => {
       return signOut(auth);

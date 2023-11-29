@@ -84,7 +84,8 @@ const handleForm = async (e) => {
 
     axios.post(`http://localhost:4200/donations/${donationId}`, { userDonations: paymentDetails }, { withCredentials: true })
     .then(res => {console.log("posted", res.data);
-    axios.patch(`http://localhost:4200/donations/${donationId}`, { donated: amount + parseInt(donatedAmount) } )
+    axios.patch(`http://localhost:4200/donations/${donationId}`, { donated: amount + parseInt(donatedAmount)
+  }, { withCredentials: true } )
 .then(res =>{ console.log(res);
 refetch()})
 .catch(err => console.log(err))
