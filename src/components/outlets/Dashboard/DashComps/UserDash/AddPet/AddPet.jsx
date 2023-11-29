@@ -1,31 +1,72 @@
-import { Toaster } from "react-hot-toast";
-import { Formik, Field, Form } from "formik";
+import { Toaster, toast } from "react-hot-toast";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import GetImage from "../../../../../../cloudinary/GetImage";
+import Dropdown from "react-dropdown";
+import "react-dropdown/style.css";
+import { AuthProvider } from "../../../../../../context/AuthContext";
 
 const AddPet = () => {
+  const [imageValue, setImageValue] = useState("");
+  const [imageName, setImageName] = useState("");
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [uploadedPublicID, setUploadedPublicID] = useState(null);
+  const { user } = useContext(AuthProvider);
 
-    const [imageValue, setImageValue] = useState("")
-    const [imageName, setImageName] = useState("")
+  const HandleImage = (e) => {
+    e.preventDefault();
 
-    const HandleImage = (e) => {
-        e.preventDefault()
-  
-        const reader = new FileReader()
-        reader.readAsDataURL(e.target.files[0])
+    const reader = new FileReader();
+    reader.readAsDataURL(e.target.files[0]);
 
-        reader.onloadend = () => {
-            setImageValue(reader.result)
-            setImageName(e.target.files[0].name)
-        }
-      
-    }
+    reader.onloadend = () => {
+      setImageValue(reader.result);
+      setImageName(e.target.files[0].name.slice(0, -4));
+      // console.log(imageName)
+    };
+  };
+
+  const options = ["Cats", "Dogs", "Rabbits", "Fish"];
+  const defaultOption = options[0];
+
+  const HandleDropdown = (e) => {
+    setCategoryFilter(e.value);
+  };
+
+  const date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
 
   const HandleAdd = (values) => {
-    console.log(imageValue);
-    axios.post("http://localhost:4200/cloudinary", { image: imageValue, imageName: imageName })
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+    console.log(imageName);
+
+    axios
+      .post("http://localhost:4200/cloudinary", {
+        image: imageValue,
+        imageName: imageName,
+      })
+      .then((res) => {
+        console.log(res);
+        setUploadedPublicID(res.data.public_id);
+        values.imageName = imageName;
+        values.image = res.data.imgURL;
+        values.category = categoryFilter.toLowerCase();
+        values.added_dateShort = `${year}-${month}-${day}`;
+        values.added_date = date.toISOString();
+        values.userName = user?.displayName;
+        values.userEmail = user?.email;
+        values.adopted = false;
+        axios
+          .post("http://localhost:4200/all-pets", { values })
+          .then((res) => {
+            toast("Pet added successfully");
+          })
+          .catch((err) => console.log(err));
+        console.log(values);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -58,6 +99,11 @@ const AddPet = () => {
                       className="input input-bordered  rounded-lg focus:outline-none"
                       required
                     />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-red-500 text-xs"
+                    />
                   </div>
 
                   <div className="form-control w-28">
@@ -71,11 +117,15 @@ const AddPet = () => {
                       className="input input-bordered  rounded-lg focus:outline-none"
                       required
                     />
+                    <ErrorMessage
+                      name="name"
+                      component="div"
+                      className="text-red-500 text-xs"
+                    />
                   </div>
                 </div>
 
-                <div className="form-control" 
-                >
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text">Image</span>
                   </label>
@@ -100,6 +150,24 @@ const AddPet = () => {
                     className="input input-bordered  rounded-lg focus:outline-none"
                     required
                   />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500 text-xs"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Category</span>
+                  </label>
+                  <Dropdown
+                    className="rounded-lg"
+                    options={options}
+                    value={defaultOption}
+                    onChange={HandleDropdown}
+                    placeholder="Select an option"
+                  />
                 </div>
 
                 <div className="form-control">
@@ -112,6 +180,11 @@ const AddPet = () => {
                     placeholder="Short Description"
                     className="input input-bordered  rounded-lg focus:outline-none"
                     required
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500 text-xs"
                   />
                 </div>
 
@@ -126,6 +199,11 @@ const AddPet = () => {
                     className="input input-bordered  rounded-lg focus:outline-none h-28"
                     required
                   />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-red-500 text-xs"
+                  />
                 </div>
 
                 <div className="form-control mt-6">
@@ -133,6 +211,7 @@ const AddPet = () => {
                     Add Pet
                   </button>
                 </div>
+                {/* { uploadedPublicID &&  <GetImage public_id={uploadedPublicID}/>} */}
               </Form>
             </Formik>
           </div>
