@@ -1,29 +1,28 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import { MdEdit } from "react-icons/md";
-import PauseModal from "../../AdminDash/AllDonations/AllDonationsComps/PauseModal";
+import useDonations from "../../../../../../custom/useDonations";
+
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthProvider } from "../../../../../../context/AuthContext";
-import DonatorsModal from "./DonatorsModal";
-import useDonations from "../../../../../../custom/useDonations";
+import PauseModal from "../../AdminDash/AllDonations/AllDonationsComps/PauseModal";
+import DonatorsModal from "../MyDonations/DonatorsModal";
 
-const MyDonations = () => {
-  const { donations } = useDonations();
+const MyDonated = () => {
+  const { donations, refetch } = useDonations();
   const { user } = useContext(AuthProvider);
 
   /** @type import("@tanstack/react-table").ColumnDef<any>*/
 
-  const myDonations = donations.filter(
-    (each) => each?.userEmail === user?.email
-  );
+  const userDonations = donations.filter(each => each?.userDonations.find(each => each?.donorEmail === user?.email).donorEmail === user?.email)
 
-  console.log(myDonations)
+  console.log(userDonations)
 
   return (
     <div className="min-h-screen">
       <h1 className="py-6 text-center text-3xl font-semibold font-poppins">
-        My Donations Campaigns
+        All Donations
       </h1>
       <div className="w-[90%] mx-auto border-2">
         <div>
@@ -34,15 +33,13 @@ const MyDonations = () => {
                 <th className="font-poppins"></th>
                 <th className="font-poppins">Name</th>
                 <th className="font-poppins">Image</th>
-                <th className="font-poppins">Max Donation</th>
-                <th className="font-poppins">Progress</th>
-                <th className="font-poppins">Status</th>
-                <th></th>
+                <th className="font-poppins">Donated</th>
+                <th className="font-poppins"></th>
               </tr>
             </thead>
             <tbody>
               {/* row 1 */}
-              {myDonations.map((each, index) => (
+              {userDonations.map((each, index) => (
                 <tr>
                   <td>{index + 1}</td>
                   <td>{each?.name}</td>
@@ -51,23 +48,10 @@ const MyDonations = () => {
                   </td>
                   <td>${each?.maxDonation}</td>
                   <td>
-                    <div
-                      className="radial-progress"
-                      style={{
-                        "--value": `${(each?.donated / each?.maxDonation)*100}`,
-                        "--size": "3rem",
-                      }}
-                      role="progressbar"
-                    >
-                      {Math.floor((each?.donated / each?.maxDonation).toFixed(2) * 100)}%
-                    </div>
+                   
                   </td>
                   <td className="flex gap-1 items-center">
-                    {each?.donationPaused ? <>Paused</> : <>Ongoing</>}
-                    <PauseModal
-                      paused={each?.donationPaused}
-                      id={each?._id}
-                    ></PauseModal>
+                
                   </td>
                   <td>
                     <NavLink to={`/dashboard/edit-donation/${each?._id}`}>
@@ -87,4 +71,4 @@ const MyDonations = () => {
   );
 };
 
-export default MyDonations;
+export default MyDonated;

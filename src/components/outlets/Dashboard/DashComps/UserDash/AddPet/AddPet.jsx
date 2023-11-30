@@ -59,7 +59,7 @@ const AddPet = () => {
         values.userEmail = user?.email;
         values.adopted = false;
         axios
-          .post("http://localhost:4200/all-pets", { values })
+          .post("http://localhost:4200/all-pets",  values )
           .then((res) => {
             toast("Pet added successfully");
           })

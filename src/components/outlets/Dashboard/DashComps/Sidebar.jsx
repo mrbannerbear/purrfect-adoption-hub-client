@@ -34,6 +34,11 @@ const Sidebar = () => {
       path: "/dashboard/my-donation-campaigns",
       name: "Donation Campaigns",
     },
+    {
+      id: 5,
+      path: "/dashboard/my-donated",
+      name: "My Donations",
+    },
   ];
 
   const adminLinks = [
@@ -78,7 +83,7 @@ const Sidebar = () => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-64 lg:pl-8 min-h-full bg-orange-50 text-base-content">
+        <ul className="menu p-4 w-72 lg:pl-8 min-h-full bg-orange-50 text-base-content">
           {/* Sidebar content here */}
           {userLinks.map((each) => (
             <NavLink
