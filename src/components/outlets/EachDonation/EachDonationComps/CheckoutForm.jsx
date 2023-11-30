@@ -16,7 +16,7 @@ const {refetch} = useDonations()
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.post("http://localhost:4200/payment-intent", { price: amount})
+      const response = await axios.post("https://purrfect-server.vercel.app/payment-intent", { price: amount})
       setClientSecret(response.data?.client_secret);
     } catch (error) {
       console.error(error);
@@ -82,9 +82,9 @@ const handleForm = async (e) => {
       donationDate: new Date().toISOString()
     };
 
-    axios.post(`http://localhost:4200/donations/${donationId}`, { userDonations: paymentDetails }, { withCredentials: true })
+    axios.post(`https://purrfect-server.vercel.app/donations/${donationId}`, { userDonations: paymentDetails }, { withCredentials: true })
     .then(res => {console.log("posted", res.data);
-    axios.patch(`http://localhost:4200/donations/${donationId}`, { donated: amount + parseInt(donatedAmount)
+    axios.patch(`https://purrfect-server.vercel.app/donations/${donationId}`, { donated: amount + parseInt(donatedAmount)
   }, { withCredentials: true } )
 .then(res =>{ console.log(res);
 refetch()})

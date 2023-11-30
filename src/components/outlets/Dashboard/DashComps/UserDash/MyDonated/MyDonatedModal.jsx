@@ -24,7 +24,7 @@ const MyDonatedModal = ({ id }) => {
     let donationDate = date;
     axios
       .delete(
-        `http://localhost:4200/donations/${id}?dlt=dltNested&&donorEmail=${donorEmail}&&donationAmount=${donationAmount}&&donationDate=${donationDate}`,
+        `https://purrfect-server.vercel.app/donations/${id}?dlt=dltNested&&donorEmail=${donorEmail}&&donationAmount=${donationAmount}&&donationDate=${donationDate}`,
         { withCredentials: true }
       )
       .then((res) => {

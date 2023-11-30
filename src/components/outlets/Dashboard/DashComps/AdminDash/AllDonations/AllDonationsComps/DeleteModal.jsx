@@ -16,7 +16,7 @@ const DeleteModal = ({ paused, id }) => {
   const HandleDelete = (e) => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:4200/donations/${id}`,)
+      .delete(`https://purrfect-server.vercel.app/donations/${id}`,)
       .then((res) => {
         console.log(res);
         if(res.data.deletedCount > 0){

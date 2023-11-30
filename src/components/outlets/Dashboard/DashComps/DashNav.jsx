@@ -13,7 +13,7 @@ const DashNav = () => {
   const HandleLogout = () => {
     logout()
     .then(res => {
-      axios.post("http://localhost:4200/logout", {}, { withCredentials: true })
+      axios.post("https://purrfect-server.vercel.app/logout", {}, { withCredentials: true })
       .then((response) => {
         console.log(response.data)
       })

@@ -48,7 +48,7 @@ const EditDonation = () => {
     console.log(values);
     if (imageName === "" || imageName == each?.imageName) {
       axios
-        .patch(`http://localhost:4200/donations/${each?._id}`, values, {withCredentials: true})
+        .patch(`https://purrfect-server.vercel.app/donations/${each?._id}`, values, {withCredentials: true})
         .then((res) => {
           res.data.modifiedCount > 0 && toast("Donation updated successfully");
           console.log(res.data);
@@ -56,7 +56,7 @@ const EditDonation = () => {
         .catch((err) => console.log(err));
     } else {
       axios
-        .post("http://localhost:4200/cloudinary", {
+        .post("https://purrfect-server.vercel.app/cloudinary", {
           image: imageValue,
           imageName: imageName,
         })
@@ -65,7 +65,7 @@ const EditDonation = () => {
           setUploadedPublicID(res.data.public_id);
           values.image = res.data.imgURL;
           axios
-            .patch(`http://localhost:4200/donations/${each?._id}`, values, {withCredentials: true})
+            .patch(`https://purrfect-server.vercel.app/donations/${each?._id}`, values, {withCredentials: true})
             .then((res) => {
               res.data.modifiedCount > 0 && toast("Donation updated successfully");
             })

@@ -41,7 +41,7 @@ const CreateDonation = () => {
     console.log(values)
 
     axios
-      .post("http://localhost:4200/cloudinary", {
+      .post("https://purrfect-server.vercel.app/cloudinary", {
         image: imageValue,
         imageName: imageName,
       })
@@ -50,10 +50,10 @@ const CreateDonation = () => {
         values.image = res.data.imgURL;
 
         axios
-          .post("http://localhost:4200/donations",  values )
+          .post("https://purrfect-server.vercel.app/donations",  values, {withCredentials:true} )
           .then((res) => {
             toast("Campaign added successfully");
-          })
+          },)
           .catch((err) => console.log(err));
         console.log(values);
       })

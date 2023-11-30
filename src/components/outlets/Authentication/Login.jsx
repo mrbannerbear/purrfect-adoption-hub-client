@@ -25,7 +25,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         axios
-        .post("http://localhost:4200/jwt", {user: email}, { withCredentials: true })
+        .post("https://purrfect-server.vercel.app/jwt", {user: email}, { withCredentials: true })
         .then((res) => {
           toast("Login successful");
           if (res.data.success) {
@@ -55,7 +55,7 @@ const Login = () => {
         console.log(data);
         setError(null);
         axios
-        .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+        .post("https://purrfect-server.vercel.app/jwt", {user: user.email}, { withCredentials: true })
         .then((res) => {
           console.log(res.data)
           toast("Login successful");
@@ -82,7 +82,7 @@ const Login = () => {
         console.log(data);
         setError(null);
         axios
-        .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+        .post("https://purrfect-server.vercel.app/jwt", {user: user.email}, { withCredentials: true })
         .then((res) => {
           toast("Login successful");
           if (res.data.success) {

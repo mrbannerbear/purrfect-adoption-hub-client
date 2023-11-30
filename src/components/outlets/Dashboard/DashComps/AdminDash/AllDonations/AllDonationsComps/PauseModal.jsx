@@ -16,7 +16,7 @@ const PauseModal = ({ paused, id }) => {
   const HandlePause = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:4200/donations/${id}`, {
+      .patch(`https://purrfect-server.vercel.app/donations/${id}`, {
         donationPaused: status,
       })
       .then((res) => {

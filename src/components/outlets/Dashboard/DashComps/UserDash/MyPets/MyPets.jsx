@@ -1,36 +1,39 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React, { useContext, useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
   //   useSortBy,
 } from "@tanstack/react-table";
-// import AdminModal from "./AdminModal";
-// import PetModal from "./PetModal";
-import axios from "axios";
-import { toast, Toaster } from "react-hot-toast";
 import { useSortBy } from "react-table";
 import usePets from "../../../../../../custom/usePets";
 import { AuthProvider } from "../../../../../../context/AuthContext";
 import { NavLink } from "react-router-dom";
 import PetDelete from "../../AdminDash/AllPets/AllPetsComps/PetDelete";
 import Modal from "../../../../EachPet/EachPetComps/Modal";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const MyPets = () => {
-  const { pets } = usePets();
+  const { pets, refetch } = usePets();
   const { user } = useContext(AuthProvider);
 
   const myPets = pets.filter((each) => each?.userEmail === user?.email);
-  const [modalPet, setModalPet] = useState(null);
 
-  const openModal = (pet) => {
-    setModalPet(pet);
-  };
-
-  const closeModal = () => {
-    setModalPet(null);
+  const HandleAdopt = (event, id) => {
+    event.preventDefault();
+    const pet = pets.find(each => each._id === id)
+    axios
+      .patch(`https://purrfect-server.vercel.app/all-pets/${id}`, { adopted: pet?.adopted == "true" ? "false" : "true", userEmail: user?.email})
+      .then((res) => {
+        console.log(res);
+        if(res.data.modifiedCount > 0){
+            refetch();
+        }
+      })
+      .catch((err) => alert(err));
   };
 
   const columns = [
@@ -81,7 +84,7 @@ const MyPets = () => {
             <button className="btn1">Update</button>
           </NavLink>
           <PetDelete id={props.row.original._id}></PetDelete>
-          <Modal id={props.row.original._id}></Modal>
+          <button onClick={() => HandleAdopt(event, props.row.original._id)} className="btn1">Adopt</button>
         </div>
       ),
     },
@@ -141,6 +144,7 @@ const MyPets = () => {
           </tbody>
         </table>
       </div>
+      <Toaster></Toaster>
     </div>
   );
 };

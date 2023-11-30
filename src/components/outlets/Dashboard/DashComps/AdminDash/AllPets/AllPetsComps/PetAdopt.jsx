@@ -6,6 +6,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import usePets from "../../../../../../../custom/usePets";
 
+
 const PetAdopt = ({ id }) => {
 
   const { refetch, pets } = usePets()
@@ -15,7 +16,7 @@ const PetAdopt = ({ id }) => {
   const HandleAdopt = (e) => {
     e.preventDefault();
     axios
-      .patch(`http://localhost:4200/all-pets/${id}`, { adopted: pet?.adopted == "true" ? "false" : "true"})
+      .patch(`https://purrfect-server.vercel.app/all-pets/${id}`, { adopted: pet?.adopted == "true" ? "false" : "true"})
       .then((res) => {
         console.log(res);
         if(res.data.modifiedCount > 0){

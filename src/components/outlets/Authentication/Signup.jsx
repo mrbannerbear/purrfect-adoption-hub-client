@@ -52,7 +52,7 @@ const Signup = () => {
           })
           .catch((err) => console.log(err));
         axios
-          .post("http://localhost:4200/users", {
+          .post("https://purrfect-server.vercel.app/users", {
             name: name,
             email: user?.email,
             image: image,
@@ -62,7 +62,7 @@ const Signup = () => {
           })
           .then(res => {
             axios
-            .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+            .post("https://purrfect-server.vercel.app/jwt", {user: user.email}, { withCredentials: true })
             .then((res) => {
               toast("Registration successful");
               if (res.data.success) {
@@ -90,7 +90,7 @@ const Signup = () => {
         const creationTime = user?.metadata?.creationTime;
         const lastSignInTime = user?.metadata?.lastSignInTime;
         console.log(data.user);
-        axios.post("http://localhost:4200/users", {
+        axios.post("https://purrfect-server.vercel.app/users", {
           name: user?.displayName,
           email: user?.email,
           image: user?.photoURL,
@@ -99,7 +99,7 @@ const Signup = () => {
           role: "user",
         }).then(res => {
           axios
-          .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+          .post("https://purrfect-server.vercel.app/jwt", {user: user.email}, { withCredentials: true })
           .then((res) => {
             toast("Registration successful");
             if (res.data.success) {
@@ -127,7 +127,7 @@ const Signup = () => {
         const creationTime = user?.metadata?.creationTime;
         const lastSignInTime = user?.metadata?.lastSignInTime;
         console.log(data);
-        axios.post("http://localhost:4200/users", {
+        axios.post("https://purrfect-server.vercel.app/users", {
           name: user.displayName,
           email: user.email,
           image: user.photoURL,
@@ -136,7 +136,7 @@ const Signup = () => {
           role: "user",
         }).then(res => {
           axios
-          .post("http://localhost:4200/jwt", {user: user.email}, { withCredentials: true })
+          .post("https://purrfect-server.vercel.app/jwt", {user: user.email}, { withCredentials: true })
           .then((res) => {
             toast("Registration successful");
             if (res.data.success) {

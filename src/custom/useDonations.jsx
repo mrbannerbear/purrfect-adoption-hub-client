@@ -11,7 +11,7 @@ const useDonations = () => {
   } = useQuery({
     queryKey: ["donations"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4200/donations`);
+      const response = await axios.get(`https://purrfect-server.vercel.app/donations`);
       return response.data;
     },
   });

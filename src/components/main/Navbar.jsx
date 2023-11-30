@@ -21,18 +21,13 @@ const Navbar = () => {
       id: 3,
       name: "Donation Campaigns",
       path: "/donation-campaigns",
-    },
-    {
-      id: 4,
-      name: "Contact",
-      path: "/contact",
-    },
+    }
   ];
 
   const HandleLogout = () => {
     logout()
     .then(res => {
-      axios.post("http://localhost:4200/logout", {}, { withCredentials: true })
+      axios.post("https://purrfect-server.vercel.app/logout", {}, { withCredentials: true })
       .then((response) => {
         console.log(response.data)
       })

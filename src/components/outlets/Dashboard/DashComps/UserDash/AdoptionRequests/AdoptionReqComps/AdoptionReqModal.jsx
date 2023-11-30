@@ -19,7 +19,7 @@ const AdoptionReqModal = ({ paused, id }) => {
   const HandleReject = (e, _id) => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:4200/adoption-requests/${_id}`)
+      .delete(`https://purrfect-server.vercel.app/adoption-requests/${_id}`)
       .then((res) => {
         console.log(res.data);
         if(res.data.deletedCount > 0){
@@ -31,10 +31,10 @@ const AdoptionReqModal = ({ paused, id }) => {
 
   const HandleAccept = (e, _id) => {
     e.preventDefault()
-    axios.patch(`http://localhost:4200/all-pets/${id}`, { adopted: true })
+    axios.patch(`https://purrfect-server.vercel.app/all-pets/${id}`, { adopted: true })
     .then(() => {
         axios
-        .delete(`http://localhost:4200/adoption-requests/${_id}`)
+        .delete(`https://purrfect-server.vercel.app/adoption-requests/${_id}`)
         .then((res) => {
           console.log(res.data);
           if(res.data.deletedCount > 0){

@@ -11,7 +11,7 @@ const usePets = () => {
   } = useQuery({
     queryKey: ["all-pets"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4200/all-pets`);
+      const response = await axios.get(`https://purrfect-server.vercel.app/all-pets`);
       return response.data;
     },
   });

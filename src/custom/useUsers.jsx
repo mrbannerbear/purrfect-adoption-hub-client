@@ -11,7 +11,7 @@ const useUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4200/users`);
+      const response = await axios.get(`https://purrfect-server.vercel.app/users`);
       return response.data;
     },
   });

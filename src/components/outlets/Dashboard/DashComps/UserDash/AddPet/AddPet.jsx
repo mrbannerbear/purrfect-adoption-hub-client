@@ -43,7 +43,7 @@ const AddPet = () => {
     console.log(imageName);
 
     axios
-      .post("http://localhost:4200/cloudinary", {
+      .post("https://purrfect-server.vercel.app/cloudinary", {
         image: imageValue,
         imageName: imageName,
       })
@@ -59,7 +59,7 @@ const AddPet = () => {
         values.userEmail = user?.email;
         values.adopted = false;
         axios
-          .post("http://localhost:4200/all-pets",  values )
+          .post("https://purrfect-server.vercel.app/all-pets",  values, {withCredentials: true} )
           .then((res) => {
             toast("Pet added successfully");
           })

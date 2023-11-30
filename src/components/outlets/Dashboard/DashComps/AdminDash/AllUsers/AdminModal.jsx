@@ -30,7 +30,7 @@ const AdminModal = ({ email, name, role }) => {
     e.preventDefault()
     const role = e.target.Role.value
     console.log(role);
-    axios.patch(`http://localhost:4200/users/${user._id}`, { role })
+    axios.patch(`https://purrfect-server.vercel.app/users/${user._id}`, { role })
     .then(res => {console.log(res)
       setRole(role)
     refetch()}).catch(err => console.log(err))

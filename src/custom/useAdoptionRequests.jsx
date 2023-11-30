@@ -11,7 +11,7 @@ const useAdoptionRequests = () => {
   } = useQuery({
     queryKey: ["adoption-requests"],
     queryFn: async () => {
-      const response = await axios.get(`http://localhost:4200/adoption-requests`);
+      const response = await axios.get(`https://purrfect-server.vercel.app/adoption-requests`);
       return response.data;
     },
   });

@@ -12,7 +12,7 @@ const PetDelete = ({ id }) => {
   const HandleDelete = (e) => {
     e.preventDefault();
     axios
-      .delete(`http://localhost:4200/all-pets/${id}`,)
+      .delete(`https://purrfect-server.vercel.app/all-pets/${id}`,)
       .then((res) => {
         console.log(res);
         if(res.data.deletedCount > 0){

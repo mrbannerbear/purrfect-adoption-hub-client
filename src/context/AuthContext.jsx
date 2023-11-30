@@ -49,12 +49,12 @@ import axios from "axios";
         setLoading(false);
         const loggedUser = { email: user?.email }
         if(user){
-            axios.post("http://localhost:4200/jwt", loggedUser, { withCredentials: true })
+            axios.post("https://purrfect-server.vercel.app/jwt", loggedUser, { withCredentials: true })
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
         }
         else{
-            axios.post("http://localhost:4200/logout", loggedUser, {
+            axios.post("https://purrfect-server.vercel.app/logout", loggedUser, {
                 withCredentials: true
             })
             .then(res => console.log(res.data))

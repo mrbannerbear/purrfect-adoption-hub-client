@@ -57,7 +57,7 @@ const PetUpdate = () => {
     console.log(values)
     if(imageName === "" || imageName == each?.imageName){
         axios
-        .patch(`http://localhost:4200/all-pets/${each?._id}`, values)
+        .patch(`https://purrfect-server.vercel.app/all-pets/${each?._id}`, values, {withCredentials: true})
         .then((res) => {
             res.data.modifiedCount > 0 && toast("Pet updated successfully");
           console.log(res.data)
@@ -65,16 +65,16 @@ const PetUpdate = () => {
         .catch((err) => console.log(err));
     }
     else{axios
-      .post("http://localhost:4200/cloudinary", {
+      .post("https://purrfect-server.vercel.app/cloudinary", {
         image: imageValue,
         imageName: imageName,
-      })
+      }, {withCredentials: true})
       .then((res) => {
         console.log(res);
         setUploadedPublicID(res.data.public_id);
         values.image = res.data.imgURL;
         axios
-          .patch(`http://localhost:4200/all-pets/${each?._id}`, values)
+          .patch(`https://purrfect-server.vercel.app/all-pets/${each?._id}`, values)
           .then((res) => {
             res.data.modifiedCount > 0 && toast("Pet updated successfully");
           })
