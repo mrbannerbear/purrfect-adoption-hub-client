@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { AuthProvider } from "../../../../context/AuthContext";
 import useAdoptionRequests from "../../../../custom/useAdoptionRequests";
 
-const Modal = ({id}) => {
+const Modal = ({id, adderEmail}) => {
   const { user } = useContext(AuthProvider);
   const {requests} = useAdoptionRequests()
 
@@ -20,11 +20,13 @@ const Modal = ({id}) => {
     const phone = e.target.Phone.value;
     const location = e.target.Location.value;
 
-    const values = { name, email, phone, location, petID: id };
+    const values = { name, email, phone, location, petID: id, adderEmail: adderEmail };
 
     if(existingReq){
       return toast("You have already requested for adoption")
     }
+
+    // console.log(values)
 
     axios
       .post("http://localhost:4200/adoption-requests", values, {

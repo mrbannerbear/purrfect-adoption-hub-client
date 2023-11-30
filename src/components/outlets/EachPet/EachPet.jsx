@@ -29,7 +29,7 @@ const EachPet = () => {
                       <p className="-mt-2 text-gray-600">Age: {each?.age}</p>
                       <p className="text-gray-600">{each?.location}</p>
                       <div className="card-actions absolute -bottom-5 w-full mx-auto flex justify-center">
-                      <Modal id={each?._id}></Modal>
+                      <Modal id={each?._id} adderEmail={each?.userEmail}></Modal>
                       </div>
                     </div>
                   </div>

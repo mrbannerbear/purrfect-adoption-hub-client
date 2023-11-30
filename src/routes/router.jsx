@@ -21,6 +21,7 @@ import CreateDonation from "../components/outlets/Dashboard/DashComps/UserDash/C
 import MyDonations from "../components/outlets/Dashboard/DashComps/UserDash/MyDonations/MyDonations";
 import MyDonated from "../components/outlets/Dashboard/DashComps/UserDash/MyDonated/MyDonated";
 import MyPets from "../components/outlets/Dashboard/DashComps/UserDash/MyPets/MyPets";
+import AdoptionRequests from "../components/outlets/Dashboard/DashComps/UserDash/AdoptionRequests/AdoptionRequests";
 
 const router = createBrowserRouter([
   {
@@ -133,6 +134,12 @@ const router = createBrowserRouter([
             <MyDonated></MyDonated>
           </PrivateRoutes>,
           path: "/dashboard/my-donated"
+        },
+        {
+          element: <PrivateRoutes>
+            <AdoptionRequests></AdoptionRequests>
+          </PrivateRoutes>,
+          path: "/dashboard/adoption-requests"
         },
     ]
   },
