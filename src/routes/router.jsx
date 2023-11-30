@@ -72,26 +72,25 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoutes>
     ),
-    path: "/dashboard",
     errorElement: <Error></Error>,
     children: [
         {
             element: <AdminRoutes>
                 <AllUsers></AllUsers>
             </AdminRoutes>,
-            path: "/dashboard/admin/all-users"
+            path: "/all-users"
         },
         {
             element: <AdminRoutes>
                 <AllPets></AllPets>
             </AdminRoutes>,
-            path: "/dashboard/admin/all-pets"
+            path: "/all-pets"
         },
         {
             element: <AdminRoutes>
                 <AllDonations></AllDonations>
             </AdminRoutes>,
-            path: "/dashboard/admin/all-donations"
+            path: "/all-donations"
         },
         {
           element: <PrivateRoutes>

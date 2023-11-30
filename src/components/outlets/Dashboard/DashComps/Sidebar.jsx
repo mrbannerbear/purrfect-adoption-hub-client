@@ -15,9 +15,9 @@ const Sidebar = () => {
 
   const userLinks = [
     {
-      id: 0,
-      path: "/dashboard",
-      name: "Profile"
+      id: 5,
+      path: "/dashboard/my-donated",
+      name: "My Donations",
     },
     {
       id: 1,
@@ -40,11 +40,6 @@ const Sidebar = () => {
       name: "Donation Campaigns",
     },
     {
-      id: 5,
-      path: "/dashboard/my-donated",
-      name: "My Donations",
-    },
-    {
       id: 6,
       path: "/dashboard/adoption-requests",
       name: "Adoption Requests",
@@ -54,17 +49,17 @@ const Sidebar = () => {
   const adminLinks = [
     {
         id: 1,
-        path: "/dashboard/admin/all-users",
+        path: "/all-users",
         name: "Users"
     },
     {
         id: 2,
-        path: "/dashboard/admin/all-pets",
+        path: "/all-pets",
         name: "All Pets"
     },
     {
         id: 3,
-        path: "/dashboard/admin/all-donations",
+        path: "/all-donations",
         name: "All Donations"
     }
   ]

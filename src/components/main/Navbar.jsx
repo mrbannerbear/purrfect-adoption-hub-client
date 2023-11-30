@@ -65,7 +65,7 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content dropdown-bottom
       mt-3 z-[1] p-3 shadow bg-base-100 rounded-box w-52"
               >
-                <NavLink to="/dashboard">
+                <NavLink to="/dashboard/my-donated">
                   <li>Dashboard</li>
                 </NavLink>
                 <NavLink>

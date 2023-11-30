@@ -5,21 +5,24 @@ import {
   useReactTable,
   getCoreRowModel,
   flexRender,
-//   useSortBy,
+  //   useSortBy,
 } from "@tanstack/react-table";
 // import AdminModal from "./AdminModal";
-// import PetModal from "./PetModal"; 
+// import PetModal from "./PetModal";
 import axios from "axios";
+import { toast, Toaster } from "react-hot-toast";
 import { useSortBy } from "react-table";
 import usePets from "../../../../../../custom/usePets";
 import { AuthProvider } from "../../../../../../context/AuthContext";
-
+import { NavLink } from "react-router-dom";
+import PetDelete from "../../AdminDash/AllPets/AllPetsComps/PetDelete";
+import Modal from "../../../../EachPet/EachPetComps/Modal";
 
 const MyPets = () => {
-    const { pets } = usePets()
-    const { user } = useContext(AuthProvider)
-    
-        const myPets = pets.filter(each => each?.userEmail === user?.email )
+  const { pets } = usePets();
+  const { user } = useContext(AuthProvider);
+
+  const myPets = pets.filter((each) => each?.userEmail === user?.email);
   const [modalPet, setModalPet] = useState(null);
 
   const openModal = (pet) => {
@@ -30,26 +33,11 @@ const MyPets = () => {
     setModalPet(null);
   };
 
-  const updatePet = (pet) => {
-
-    console.log("Update pet:", pet);
-  };
-
-  const deletePet = (pet) => {
-
-    console.log("Delete pet:", pet);
-  };
-
-  const adoptPet = (pet) => {
-
-    console.log("Adopt pet:", pet);
-  };
-
   const columns = [
     {
       header: "",
       accessorKey: "_id",
-      cell: (props) => <div className="w-12"></div>
+      cell: (props) => <span>{myPets.indexOf(props.row.original) + 1}</span>,
     },
     {
       header: "Pet Name",
@@ -67,7 +55,7 @@ const MyPets = () => {
           <img
             src={props.row.original.image}
             alt=""
-            className="w-10 h-10 rounded-full"
+            className="w-full h-full"
           />
         </div>
       ),
@@ -76,7 +64,12 @@ const MyPets = () => {
       header: "Adoption Status",
       accessorKey: "adopted",
       cell: (props) => (
-        <span>{props.row.original.adopted ? "Adopted" : "Not Adopted"}</span>
+        <span>
+          {!props.row.original.adopted ||
+          props.row.original?.adopted === "false"
+            ? "Not Adopted"
+            : "Adopted"}
+        </span>
       ),
     },
     {
@@ -84,11 +77,11 @@ const MyPets = () => {
       accessorKey: "actions",
       cell: (props) => (
         <div className="flex gap-2">
-          <button onClick={() => updatePet(props.row.original)}>
-            Update
-          </button>
-          <button onClick={() => deletePet(props.row.original)}>Delete</button>
-          <button onClick={() => adoptPet(props.row.original)}>Adopt</button>
+          <NavLink to={`/dashboard/pet-update/${props.row.original._id}`}>
+            <button className="btn1">Update</button>
+          </NavLink>
+          <PetDelete id={props.row.original._id}></PetDelete>
+          <Modal id={props.row.original._id}></Modal>
         </div>
       ),
     },
@@ -118,7 +111,7 @@ const MyPets = () => {
                 <th
                   key={header.id}
                   className="w-1/4 font-poppins border"
-                //   {...header.getHeaderProps(header.getSortByToggleProps())}
+                  //   {...header.getHeaderProps(header.getSortByToggleProps())}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -148,13 +141,6 @@ const MyPets = () => {
           </tbody>
         </table>
       </div>
-      {/* {modalPet && (
-        <PetModal
-          pet={modalPet}
-          handleClose={closeModal}
-          // Additional props as needed
-        />
-      )} */}
     </div>
   );
 };

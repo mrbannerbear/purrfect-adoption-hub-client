@@ -42,7 +42,7 @@ const Modal = ({id, adderEmail}) => {
   return (
     <div>
       <button
-        className="lg:w-40 btn1 border-base-content"
+        className=" btn1 border-base-content"
         onClick={() => document.getElementById("my_modal_1").showModal()}
       >
         Adopt

@@ -43,11 +43,11 @@ const PetDelete = ({ id }) => {
 
               <div className="modal-action">
                 <button className="btn1 border-base-content w-24">
-                  Confirm
+                  Yes
                 </button>
                 <form method="dialog">
                   <button className="btn1 border-base-content w-24">
-                    Close
+                    No
                   </button>
                 </form>
               </div>

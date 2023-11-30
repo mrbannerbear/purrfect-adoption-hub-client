@@ -46,16 +46,7 @@ const PauseModal = ({ paused, id }) => {
                 <h2 className="text-center py-3 font-medium text-xl">
                   Change Status to Pause/Ongoing?
                 </h2>
-                <label className="label">
-                  <span className="label-text text-lg">Paused:</span>
-                </label>
-                <input
-                  name="Name"
-                  type="text"
-                  className="input input-bordered  rounded-lg focus:outline-none"
-                  defaultValue={paused}
-                  readOnly
-                />
+              
                 <span className="text-center py-4 text-lg">
                   This donation campaign's status will change to{" "}
                   {paused ? "Paused: False" : "Paused: True"}
