@@ -20,6 +20,7 @@ import PetUpdate from "../components/outlets/Dashboard/DashComps/AdminDash/AllPe
 import CreateDonation from "../components/outlets/Dashboard/DashComps/UserDash/CreateDonation/CreateDonation";
 import MyDonations from "../components/outlets/Dashboard/DashComps/UserDash/MyDonations/MyDonations";
 import MyDonated from "../components/outlets/Dashboard/DashComps/UserDash/MyDonated/MyDonated";
+import MyPets from "../components/outlets/Dashboard/DashComps/UserDash/MyPets/MyPets";
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,12 @@ const router = createBrowserRouter([
                 <AllDonations></AllDonations>
             </AdminRoutes>,
             path: "/dashboard/admin/all-donations"
+        },
+        {
+          element: <PrivateRoutes>
+            <MyPets></MyPets>
+          </PrivateRoutes>,
+          path: "/dashboard/added-pets"
         },
         {
           element: <PrivateRoutes>

@@ -26,6 +26,11 @@ const Sidebar = () => {
     },
     {
       id: 2,
+      path: "/dashboard/added-pets",
+      name: "Added Pets"
+    },
+    {
+      id: 3,
       path: "/dashboard/create-donation",
       name: "Create Donation",
     },
