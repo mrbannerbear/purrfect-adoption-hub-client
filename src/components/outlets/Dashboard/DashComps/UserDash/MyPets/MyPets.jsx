@@ -31,21 +31,17 @@ const MyPets = () => {
   };
 
   const updatePet = (pet) => {
-    // Handle pet update logic, redirect the user to the pet update page
-    // You can use react-router-dom's history to navigate to the update page
+
     console.log("Update pet:", pet);
   };
 
   const deletePet = (pet) => {
-    // Handle pet deletion logic
-    // You can use a modal to confirm the deletion
+
     console.log("Delete pet:", pet);
   };
 
   const adoptPet = (pet) => {
-    // Handle pet adoption logic
-    // Update the adopted field in the database to true
-    // You may want to confirm the adoption with a modal
+
     console.log("Adopt pet:", pet);
   };
 

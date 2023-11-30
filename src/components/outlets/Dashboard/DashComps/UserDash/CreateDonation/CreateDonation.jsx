@@ -52,7 +52,7 @@ const CreateDonation = () => {
         axios
           .post("http://localhost:4200/donations",  values )
           .then((res) => {
-            toast("Pet added successfully");
+            toast("Campaign added successfully");
           })
           .catch((err) => console.log(err));
         console.log(values);
@@ -62,7 +62,7 @@ const CreateDonation = () => {
 
   return (
     <div className="min-h-screen bg-base-100 py-8">
-      <h1 className="text-3xl text-center pb-4">Create Donation</h1>
+      <h1 className="text-3xl text-center pb-4 font-poppins font-semibold">Create Donation</h1>
       <div className="hero">
         <div className=" card w-3/4 flex-col lg:flex-row-reverse">
           <div className="card-body px-4 flex-shrink-0 w-3/4 mx-auto bg-base-100 rounded-lg border-2 border-orange-600">
