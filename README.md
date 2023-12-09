@@ -1,8 +1,26 @@
-# React + Vite
+## Purrfect Adoption Hub
+## [Link](https://purrfect-adoption-hub1.surge.sh/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Purrfect Adoption Hub is a pet adoption site that allows users to adopt pets as well as donate. 
 
-Currently, two official plugins are available:
+## Technologies Used:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend:
+- ReactJS
+- React Router
+- Tailwind CSS
+- TanStack Query
+- TanStack Table
+- Stripe Payment Gateway
+
+### Backend:
+- Firebase
+- MongoDB
+- Express.js
+- Axios
+
+## Features
+- Simple yet engaging design
+- Stripe payment gateway for donations
+- User dashboard containing info on added pets & donations
+- Responsive design except in dashboard
