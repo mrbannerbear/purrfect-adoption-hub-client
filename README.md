@@ -3,6 +3,9 @@
 
 Purrfect Adoption Hub is a pet adoption site that allows users to adopt pets as well as donate. 
 
+### Admin email: haaland123@gmail.com
+### Admin password: @Haaland
+
 ## Technologies Used:
 
 ### Frontend:
