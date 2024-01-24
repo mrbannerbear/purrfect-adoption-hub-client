@@ -21,22 +21,27 @@ const Navbar = () => {
       id: 3,
       name: "Donation Campaigns",
       path: "/donation-campaigns",
-    }
+    },
   ];
 
   const HandleLogout = () => {
     logout()
-    .then(res => {
-      axios.post("https://purrfect-server.vercel.app/logout", {}, { withCredentials: true })
-      .then((response) => {
-        console.log(response.data)
+      .then((res) => {
+        axios
+          .post(
+            "https://purrfect-server.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((error) => {
+            console.error("Logout failed:", error);
+          });
       })
-      .catch((error) => {
-        console.error("Logout failed:", error);
-      });
-    })
-    .catch()
-  }
+      .catch();
+  };
 
   return (
     <nav className="lg:px-12">
@@ -45,7 +50,10 @@ const Navbar = () => {
           <NavLink to="/">
             <span className="px-4 text-3xl font-semibold text-orange-600">
               purr<span className="text-gray-600">fect </span>
-              <span className="font-normal text-xs md:text-sm"> Adoption Hub</span>
+              <span className="font-normal text-xs md:text-sm">
+                {" "}
+                Adoption Hub
+              </span>
             </span>
           </NavLink>
         </div>
@@ -53,7 +61,11 @@ const Navbar = () => {
           {user ? (
             <div className="dropdown dropdown-left">
               <label tabIndex={0} className="btn btn-ghost btn-circle">
-                <img src={user?.photoURL} alt="" className="h-10 w-10 rounded-full"/>
+                <img
+                  src={user?.photoURL}
+                  alt=""
+                  className="h-10 w-10 rounded-full"
+                />
               </label>
               <ul
                 tabIndex={0}
@@ -64,8 +76,14 @@ const Navbar = () => {
                   <li>Dashboard</li>
                 </NavLink>
                 <NavLink>
-                  <li><button className="hover:bg-transparent p-0"
-                  onClick={HandleLogout}>Log Out</button></li>
+                  <li>
+                    <button
+                      className="hover:bg-transparent p-0"
+                      onClick={HandleLogout}
+                    >
+                      Log Out
+                    </button>
+                  </li>
                 </NavLink>
               </ul>
             </div>
@@ -79,18 +97,16 @@ const Navbar = () => {
       <div className="px-6 mb-3">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex space-x-4 list-none justify-center navlink-container">
-
             {NavComps.map((each) => (
               <li key={each.id} className="text-sm md:text-[16px] p-1 md:px-2">
-              <NavLink
-                className={({ isPending, isActive }) =>
-                  isPending ? "" : isActive ? "text-orange-600" : ""
-                }
-                to={each.path}
-              >
-                {each.name}
-
-              </NavLink>
+                <NavLink
+                  className={({ isPending, isActive }) =>
+                    isPending ? "" : isActive ? "text-orange-600" : ""
+                  }
+                  to={each.path}
+                >
+                  {each.name}
+                </NavLink>
               </li>
             ))}
           </div>

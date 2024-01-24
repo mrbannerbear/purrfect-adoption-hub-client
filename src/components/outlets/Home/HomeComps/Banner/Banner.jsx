@@ -4,7 +4,7 @@ const Banner = () => {
         <div className="bg-orange-50 min-h-screen lg:min-h-[85vh] flex flex-col-reverse md:flex-row justify-center items-center">
               <div className="bg-contain bg-center">
             <img className="w-[16rem] md:w-[20rem] lg:w-[18rem]"
-            src="https://res-console.cloudinary.com/diyh5df1v/media_explorer_thumbnails/fcfd0f2e7915ef64b8e5a7f8f6d17190/detailed" alt="" />
+            src="/banner1.png" alt="" />
             </div>
             <div className="flex justify-center items-center text-center md:text-start">
                 <div className="max-w-md">

@@ -55,7 +55,7 @@ const Contact = () => {
       <div className="hero min-h-[60vh]">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
-            src="https://res-console.cloudinary.com/diyh5df1v/media_explorer_thumbnails/c0e60f7b1d10164ca8645e38a63ff70a/detailed"
+            src="/contact1.png"
             className="w-56 md:w-72 lg:w-96 rounded-lg"
           />
           <div>
